@@ -36,7 +36,6 @@ def predict_waste(image):
     
     # --- LABELS SWAPPED HERE ---
     if prediction > 0.5:
-        # If your model was showing Organic for Inorganic, this flips it.
         return "INORGANIC", prediction * 100, (0, 0, 255)
     else:
         return "ORGANIC", (1 - prediction) * 100, (0, 255, 0)
