@@ -27,15 +27,19 @@ st.write("<p style='text-align: center;'>Responsible Waste Classification (SDG 1
 
 # --- LOGIC ---
 def predict_waste(image):
-    img = image.resize((224, 224))
+    # Ensure image is RGB (to avoid errors with PNG transparency)
+    img = image.convert("RGB")
+    img = img.resize((224, 224))
     img_array = img_to_array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
     prediction = model.predict(img_array)[0][0]
     
+    # --- LABELS SWAPPED HERE ---
     if prediction > 0.5:
-        return "ORGANIC", prediction * 100, (0, 255, 0)
+        # If your model was showing Organic for Inorganic, this flips it.
+        return "INORGANIC", prediction * 100, (0, 0, 255)
     else:
-        return "INORGANIC", (1 - prediction) * 100, (0, 0, 255)
+        return "ORGANIC", (1 - prediction) * 100, (0, 255, 0)
 
 # --- UI BODY ---
 option = st.sidebar.radio("Input:", ["📸 Camera", "📤 Upload"])
