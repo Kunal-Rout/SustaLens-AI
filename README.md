@@ -18,7 +18,7 @@ Improper waste segregation is a leading cause of environmental pollution. Accord
 
 ## 📂 Project Structure
 ```text
-├── SustaLens_Model.h5    # The trained CNN model (134MB via Git LFS)
+├── SustaLens_Model.h5    # The trained CNN model (128MB via Git LFS)
 ├── app.py                # Streamlit Web Application logic
 ├── requirements.txt      # Python dependencies
 └── README.md             # Project documentation
