@@ -34,7 +34,6 @@ def predict_waste(image):
     img_array = np.expand_dims(img_array, axis=0)
     prediction = model.predict(img_array)[0][0]
     
-    # --- LABELS SWAPPED HERE ---
     if prediction > 0.5:
         return "INORGANIC", prediction * 100, (0, 0, 255)
     else:
